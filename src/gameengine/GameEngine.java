@@ -4,69 +4,72 @@
  */
 package gameengine;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
+import org.newdawn.slick.AppGameContainer;
+import org.newdawn.slick.BasicGame;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.SlickException;
 
 /**
  *
  * @author jordan
  */
-public class GameEngine {
+public class GameEngine extends BasicGame {
+
+    public GameEngine(String gameName) {
+        super(gameName);
+    }
+
+    @Override
+    public void update(GameContainer container, int i) {
+
+    }
+
+    @Override
+    public void init(GameContainer container) {
+
+    }
+
+    @Override
+    public void render(GameContainer container, Graphics g) {
+        g.drawString("What the shit!?", 250, 220);
+    }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws InterruptedException {
-        GameWindow w = new GameWindow();
-        w.setVisible(true);
-    }
-}
-
-class Surface extends JPanel{
-    
-    private Rectangle rect = new Rectangle(0,0,25,25);
-    
-    public void updateRect(int x, int y){
-        rect.x = x;
-        rect.y = y;
-    }
-    
-    @Override
-    public void paintComponent(Graphics g){
-        Graphics2D g2d = (Graphics2D)g;
-        
-        g2d.fill(rect);
-    }
-}
-
-class GameWindow extends JFrame{
-    private Surface s = new Surface();
-    
-    public GameWindow() throws InterruptedException{
-        setTitle("Game Window");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        setSize(600, 400);
-        
-        add(s);
-        
-        GameLoop();
-    }
-    
-    private void GameLoop() throws InterruptedException{
-        boolean gameRunning = true;
-        int i = 0;
-        
-        while(gameRunning){
-            i++;
-            s.updateRect(i, i);
-            s.revalidate();
-            
-            if(i == 100) gameRunning = false;
+        try {
+            AppGameContainer appgc;
+            appgc = new AppGameContainer(new GameEngine("Simple Slick Game"));
+            appgc.setDisplayMode(640, 480, false);
+            appgc.start();
+        } catch (SlickException ex) {
+            Logger.getLogger(GameEngine.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+}
+
+class Controller implements KeyListener {
+
+    public boolean moving = false;
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        moving = true;
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
     }
 }
