@@ -19,14 +19,17 @@ import org.newdawn.slick.SlickException;
  * @author jordan
  */
 public class GameEngine extends BasicGame {
-
+    int x = 0;
+    int y = 0;
+    
     public GameEngine(String gameName) {
         super(gameName);
     }
 
     @Override
     public void update(GameContainer container, int i) {
-
+        x++;
+        y++;
     }
 
     @Override
