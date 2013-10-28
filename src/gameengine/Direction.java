@@ -10,6 +10,6 @@ package gameengine;
  *
  * @author jordan
  */
-public class AnimatedSprite {
-    
+public enum Direction {
+    Left, Right;
 }

@@ -19,7 +19,7 @@ import org.newdawn.slick.geom.Rectangle;
  */
 public class GameEngine extends BasicGame {
 
-    Rectangle rect = new Rectangle(10, 10, 50, 50);
+    Rectangle rect = new Rectangle(10, 200, 50, 50);
     boolean moving = false;
     Direction direction = Direction.Left;
 
@@ -81,8 +81,4 @@ public class GameEngine extends BasicGame {
             Logger.getLogger(GameEngine.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-}
-
-enum Direction {
-    Left, Right;
 }
