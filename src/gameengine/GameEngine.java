@@ -6,30 +6,37 @@ package gameengine;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.awt.event.KeyListener;
-import java.awt.event.KeyEvent;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Rectangle;
 
 /**
  *
  * @author jordan
  */
 public class GameEngine extends BasicGame {
-    int x = 0;
-    int y = 0;
-    
+
+    Rectangle rect = new Rectangle(10, 10, 50, 50);
+    boolean moving = false;
+    Direction direction = Direction.Left;
+
     public GameEngine(String gameName) {
         super(gameName);
     }
 
     @Override
     public void update(GameContainer container, int i) {
-        x++;
-        y++;
+        if (moving) {
+            if (direction == Direction.Right) {
+                rect.setX(rect.getX() + 5);
+            }
+            else if(direction == Direction.Left){
+                rect.setX(rect.getX() - 5);
+            }
+        }
     }
 
     @Override
@@ -39,13 +46,32 @@ public class GameEngine extends BasicGame {
 
     @Override
     public void render(GameContainer container, Graphics g) {
-        g.drawString("What the shit!?", 250, 220);
+        g.draw(rect);
+    }
+
+    @Override
+    public void keyPressed(int key, char c) {
+        if (c == 'd') {
+            moving = true;
+            direction = Direction.Right;
+        }
+        else if(c == 'a'){
+            moving = true;
+            direction = Direction.Left;
+        }
+    }
+
+    @Override
+    public void keyReleased(int key, char c) {
+        if(c == 'd' || c == 'a'){
+            moving = false;
+        }
     }
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         try {
             AppGameContainer appgc;
             appgc = new AppGameContainer(new GameEngine("Simple Slick Game"));
@@ -57,22 +83,6 @@ public class GameEngine extends BasicGame {
     }
 }
 
-class Controller implements KeyListener {
-
-    public boolean moving = false;
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        moving = true;
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
+enum Direction {
+    Left, Right;
 }
