@@ -27,9 +27,9 @@ public class MovableObject extends Animation {
     }
 
     public void Update() {
-        if (direction == Direction.Right) {
+        if (direction == Direction.Right && moving) {
             rect.setX(rect.getX() + speed);
-        } else if (direction == Direction.Left) {
+        } else if (direction == Direction.Left && moving) {
             rect.setX(rect.getX() - speed);
         }
     }
