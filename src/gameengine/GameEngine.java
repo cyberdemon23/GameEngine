@@ -4,17 +4,18 @@
  */
 package gameengine;
 
+import gameengine.Classes.MovableObject;
+import gameengine.Classes.GeraldAssetLoader;
+import gameengine.Enums.Direction;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
-import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
-import org.newdawn.slick.geom.Rectangle;
 
 /**
  *
@@ -73,7 +74,7 @@ public class GameEngine extends BasicGame {
     public static void main(String[] args) {
         try {
             AppGameContainer appgc;
-            appgc = new AppGameContainer(new GameEngine("Simple Slick Game"));
+            appgc = new AppGameContainer(new GameEngine("Gerald's Game"));
             appgc.setDisplayMode(640, 480, false);
             appgc.start();
         } catch (SlickException ex) {

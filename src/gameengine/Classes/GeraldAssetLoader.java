@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gameengine;
+package gameengine.Classes;
+
+import gameengine.Interfaces.IAssetLoader;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -27,8 +29,9 @@ public class GeraldAssetLoader implements IAssetLoader {
         Image i;
         try {
             Rectangle rect = new Rectangle(10, 200, 50, 50);
-            i = new Image("Assets/Gerald_Prototype.png", false, 1, Color.white);
-            SpriteSheet ss = new SpriteSheet(i, 61, 95);
+            i = new Image("Assets/MousePrototypeColor1.png", false, 1, Color.white);
+            //i = new Image("Assets/MousePrototypeColor1.png");
+            SpriteSheet ss = new SpriteSheet(i, 64, 96);
             assets.add(new MovableObject(rect, 5, ss, 1));
         } catch (SlickException ex) {
             Logger.getLogger(GeraldAssetLoader.class.getName()).log(Level.SEVERE, null, ex);

@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 
-package gameengine;
+package gameengine.Interfaces;
 
+import gameengine.Classes.MovableObject;
 import java.util.ArrayList;
 
 /**

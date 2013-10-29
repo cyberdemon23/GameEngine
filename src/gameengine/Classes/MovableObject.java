@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gameengine;
+package gameengine.Classes;
 
+import gameengine.Enums.Direction;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.SpriteSheet;
