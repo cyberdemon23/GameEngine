@@ -17,6 +17,7 @@ public class MovableObject extends Animation {
 
     private Rectangle rect;
     private float speed = 0f;
+    private boolean moving = false;
     private Direction direction = Direction.Right;
 
     public MovableObject(Rectangle rect, float speed, SpriteSheet ss, int duration) {
@@ -63,6 +64,14 @@ public class MovableObject extends Animation {
 
     public Direction GetDirection() {
         return direction;
+    }
+    
+    public void SetMoving(boolean moving){
+        this.moving = moving;
+    }
+    
+    public boolean GetMoving(){
+        return moving;
     }
     
     public void SetRectangle(Rectangle rect){

@@ -20,8 +20,7 @@ import org.newdawn.slick.geom.Rectangle;
 public class GameEngine extends BasicGame {
 
     Rectangle rect = new Rectangle(10, 200, 50, 50);
-    boolean moving = false;
-    Direction direction = Direction.Left;
+    MovableObject player = new MovableObject(rect, 5, null, 1);
 
     public GameEngine(String gameName) {
         super(gameName);
@@ -29,14 +28,7 @@ public class GameEngine extends BasicGame {
 
     @Override
     public void update(GameContainer container, int i) {
-        if (moving) {
-            if (direction == Direction.Right) {
-                rect.setX(rect.getX() + 5);
-            }
-            else if(direction == Direction.Left){
-                rect.setX(rect.getX() - 5);
-            }
-        }
+        player.Update();
     }
 
     @Override
@@ -46,25 +38,25 @@ public class GameEngine extends BasicGame {
 
     @Override
     public void render(GameContainer container, Graphics g) {
-        g.draw(rect);
+        g.draw(player.GetRectangle());
     }
 
     @Override
     public void keyPressed(int key, char c) {
         if (c == 'd') {
-            moving = true;
-            direction = Direction.Right;
+            player.SetMoving(true);
+            player.SetDirection(Direction.Right);
         }
         else if(c == 'a'){
-            moving = true;
-            direction = Direction.Left;
+            player.SetMoving(true);
+            player.SetDirection(Direction.Left);
         }
     }
 
     @Override
     public void keyReleased(int key, char c) {
         if(c == 'd' || c == 'a'){
-            moving = false;
+            player.SetMoving(false);
         }
     }
 
