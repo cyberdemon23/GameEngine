@@ -59,6 +59,10 @@ public class GameEngine extends BasicGame {
             player.SetMoving(true);
             player.SetDirection(Direction.Left);
         }
+        if(key == 57){
+            player.Jump();
+        }
+        
     }
 
     @Override

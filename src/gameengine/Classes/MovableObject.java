@@ -19,6 +19,8 @@ public class MovableObject extends Animation {
     private Rectangle rect;
     private float speed = 0f;
     private boolean moving = false;
+    private boolean jumping = false;
+    private int jumpCount = 0;
     private Direction direction = Direction.Right;
 
     public MovableObject(Rectangle rect, float speed, SpriteSheet ss, int duration) {
@@ -33,6 +35,15 @@ public class MovableObject extends Animation {
         } else if (direction == Direction.Left && moving) {
             rect.setX(rect.getX() - speed);
         }
+        
+        if(jumping && jumpCount < 5){
+            rect.setY(rect.getY() - speed);
+            jumpCount++;
+        }
+        else{
+            jumping = false;
+        }
+        
     }
 
     public void SetSpeed(float newSpeed) {
@@ -81,5 +92,9 @@ public class MovableObject extends Animation {
     
     public Rectangle GetRectangle(){
         return rect;
+    }
+    
+    public void Jump(){
+        jumping = true;
     }
 }
