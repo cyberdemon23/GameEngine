@@ -44,9 +44,8 @@ public class GameEngine extends BasicGame {
     }
 
     @Override
-    public void render(GameContainer container, Graphics g) {
-        //g.draw(player.GetRectangle());
-        player.draw(player.GetX(), player.GetY());
+    public void render(GameContainer container, Graphics g) {        
+        player.draw(player.GetX(), player.GetY());                   
     }
 
     @Override
@@ -69,6 +68,10 @@ public class GameEngine extends BasicGame {
     public void keyReleased(int key, char c) {
         if(c == 'd' || c == 'a'){
             player.SetMoving(false);
+        }
+        
+        if(key == 57){
+           player.CancelJump();
         }
     }
 
