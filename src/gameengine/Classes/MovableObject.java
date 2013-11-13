@@ -22,6 +22,10 @@ public class MovableObject extends Animation {
     private boolean jumping = false;
     private int jumpCount = 0;
     private Direction direction = Direction.Right;
+    private int jumpHeight = 20;
+    private float jumpSpeed = 6;
+    private int jumpPeak = 10;
+    private int currentJumpPeak = 0;
 
     public MovableObject(Rectangle rect, float speed, SpriteSheet ss, int duration) {
         super(ss, duration);
@@ -35,15 +39,24 @@ public class MovableObject extends Animation {
         } else if (direction == Direction.Left && moving) {
             rect.setX(rect.getX() - speed);
         }
-        
-        if(jumping && jumpCount < 5){
-            rect.setY(rect.getY() - speed);
+
+        if (jumping && jumpCount < jumpHeight) {
+            rect.setY(rect.getY() - jumpSpeed);
             jumpCount++;
+        } 
+        else if(currentJumpPeak < jumpPeak && jumping){
+            currentJumpPeak++;
         }
-        else{
+        else {
             jumping = false;
+
+            //Replace with actual collision detection.
+            if (jumpCount != 0 ) {
+                rect.setY(rect.getY() + jumpSpeed);
+                jumpCount--;
+                currentJumpPeak = 0;
+            }
         }
-        
     }
 
     public void SetSpeed(float newSpeed) {
@@ -77,24 +90,24 @@ public class MovableObject extends Animation {
     public Direction GetDirection() {
         return direction;
     }
-    
-    public void SetMoving(boolean moving){
+
+    public void SetMoving(boolean moving) {
         this.moving = moving;
     }
-    
-    public boolean GetMoving(){
+
+    public boolean GetMoving() {
         return moving;
     }
-    
-    public void SetRectangle(Rectangle rect){
+
+    public void SetRectangle(Rectangle rect) {
         this.rect = rect;
     }
-    
-    public Rectangle GetRectangle(){
+
+    public Rectangle GetRectangle() {
         return rect;
     }
-    
-    public void Jump(){
+
+    public void Jump() {
         jumping = true;
     }
 }
