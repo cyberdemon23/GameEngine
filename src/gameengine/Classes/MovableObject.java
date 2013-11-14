@@ -74,6 +74,11 @@ public class MovableObject extends Animation {
                 jumpBlocked = false;
             }
         }
+        
+        if(!moving){
+            currentFrame = 0;
+            super.setCurrentFrame(currentFrame);
+        }
     }
 
     public void SetSpeed(float newSpeed) {
