@@ -36,7 +36,8 @@ public class GameEngine extends BasicGame {
     @Override
     public void init(GameContainer container) throws SlickException {
         container.setTargetFrameRate(60);
-        //container.setMaximumLogicUpdateInterval(10);
+        //container.setMaximumLogicUpdateInterval(10000);
+        container.setMinimumLogicUpdateInterval(30);
         container.setVSync(true);        
         
         //Load the main character.

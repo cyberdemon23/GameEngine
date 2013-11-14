@@ -38,6 +38,7 @@ public class MovableObject extends Animation {
         super(ss, duration);
         this.rect = rect;
         this.speed = speed;
+        //this.jumpSpeed = this.speed;
         super.setCurrentFrame(0);
         super.setAutoUpdate(false);
     }
@@ -58,6 +59,7 @@ public class MovableObject extends Animation {
 
         if (jumping && jumpCount < jumpHeight) {
             rect.setY(rect.getY() - jumpSpeed);
+            //this.speed = this.jumpSpeed;
             jumpCount++;
             jumpBlocked = true;
         } else if (currentJumpPeak < jumpPeak && jumping) {
