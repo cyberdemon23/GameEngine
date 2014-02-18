@@ -66,7 +66,7 @@ public class GameEngine extends BasicGame {
     }
 
     @Override
-    public void keyReleased(int key, char c) {
+    public void keyReleased(int keys, char c) {
         if(c == 'd' || c == 'a'){
             player.SetMoving(false);
         }
